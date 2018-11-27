@@ -1,0 +1,100 @@
+\begin{thebibliography}{10}
+
+\bibitem{fussmann_crossing_2000}
+Gregor~F. Fussmann, Stephen~P. Ellner, Kyle~W. Shertzer, and Nelson~G.
+  Hairston~Jr.
+\newblock Crossing the {Hopf} bifurcation in a live predator-prey system.
+\newblock {\em Science}, 290(5495):1358--1360, 2000.
+
+\bibitem{yoshida_rapid_2003}
+Takehito Yoshida, Laura~E. Jones, Stephen~P. Ellner, Gregor~F. Fussmann, and
+  Nelson~G. Hairston.
+\newblock Rapid evolution drives ecological dynamics in a predator–prey
+  system.
+\newblock {\em Nature}, 424(6946):303--306, July 2003.
+
+\bibitem{huffaker_experimental_1958}
+C.~Huffaker.
+\newblock Experimental studies on predation: {Dispersion} factors and
+  predator-prey oscillations.
+\newblock {\em Hilgardia}, 27(14):343--383, August 1958.
+
+\bibitem{utida_cyclic_1957}
+Syunro Utida.
+\newblock Cyclic {Fluctuations} of {Population} {Density} {Intrinsic} to the
+  {Host}-{Parasite} {System}.
+\newblock {\em Ecology}, 38(3):442--449, July 1957.
+
+\bibitem{smith_rosenzweig-macarthur_nodate}
+Hal~L Smith.
+\newblock {THE} {ROSENZWEIG}-{MACARTHUR} {PREDATOR}-{PREY}.
+\newblock page~10.
+
+\bibitem{mccauley_physiological_1990}
+Edward McCauley, William~W. Murdoch, Roger~M. Nisbet, and William S.~C. Gurney.
+\newblock The {Physiological} {Ecology} of {Daphnia}: {Development} of a
+  {Model} of {Growth} and {Reproduction}.
+\newblock {\em Ecology}, 71(2):703--715, April 1990.
+
+\bibitem{mccauley_growth_1990}
+E.~McCauley, W.~W. Murdoch, and R.~M. Nisbet.
+\newblock Growth, {Reproduction}, and {Mortality} of {Daphnia} pulex {Leydig}:
+  {Life} at {Low} {Food}.
+\newblock {\em Functional Ecology}, 4(4):505--514, 1990.
+
+\bibitem{mccauley_cyclic_1987}
+Edward McCauley and William~W. Murdoch.
+\newblock Cyclic and {Stable} {Populations}: {Plankton} as {Paradigm}.
+\newblock {\em The American Naturalist}, 129(1):97--121, January 1987.
+
+\bibitem{mccauley_large-amplitude_1999}
+Edward McCauley, Roger~M. Nisbet, William~W. Murdoch, Andre~M. de~Roos, and
+  William S.~C. Gurney.
+\newblock Large-amplitude cycles of \textit{{Daphnia}} and its algal prey in
+  enriched environments.
+\newblock {\em Nature}, 402(6762):653--656, December 1999.
+
+\bibitem{luckinbill_coexistence_1973}
+Leo~S. Luckinbill.
+\newblock Coexistence in {Laboratory} {Populations} of {Paramecium} {Aurelia}
+  and {Its} {Predator} {Didinium} {Nasutum}.
+\newblock {\em Ecology}, 54(6):1320--1327, November 1973.
+
+\bibitem{luckinbill_effects_1974}
+Leo~S. Luckinbill.
+\newblock The {Effects} of {Space} and {Enrichment} on a {Predator}-{Prey}
+  {System}.
+\newblock {\em Ecology}, 55(5):1142--1147, August 1974.
+
+\bibitem{snell_effect_1986}
+T.~W. Snell.
+\newblock Effect of temperature, salinity and food level on sexual and asexual
+  reproduction in {Brachionus} plicatilis ({Rotifera}).
+\newblock {\em Marine Biology}, 92(2):157--162, 1986.
+
+\bibitem{sarma_effect_nodate}
+S~S~S Sarma, Bertin Elguea-Sanchez, and S~Nandini.
+\newblock Effect of salinity on competition between the rotifers {Brachionus}
+  rotundiformis {Tschugunoff} and {Hexarthra} jenkinae ({De} {Beauchamp})
+  ({Rotifera}).
+\newblock page~6.
+
+\bibitem{miracle_salinity_nodate}
+Maria~R Miracle and Manuel Serra.
+\newblock Salinity and temperature influence in rotifer life history
+  characteristics.
+\newblock page~22.
+
+\bibitem{deb_fast_2002}
+K.~Deb, A.~Pratap, S.~Agarwal, and T.~Meyarivan.
+\newblock A fast and elitist multiobjective genetic algorithm: {NSGA}-{II}.
+\newblock {\em IEEE Transactions on Evolutionary Computation}, 6(2):182--197,
+  April 2002.
+
+\bibitem{zitzler_spea2:_nodate}
+Eckart Zitzler, Marco Laumanns, and Lothar Thiele.
+\newblock {SPEA}2: {Improving} the {Strength} {Pareto} {Evolutionary}
+  {Algorithm}.
+\newblock page~21.
+
+\end{thebibliography}

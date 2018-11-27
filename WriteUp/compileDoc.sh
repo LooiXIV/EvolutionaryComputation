@@ -1,0 +1,4 @@
+pdflatex ParameterEstimationOfODEs.tex
+bibtex ParameterEstimationOfODEs.aux
+pdflatex ParameterEstimationOfODEs.tex
+pdflatex ParameterEstimationOfODEs.tex

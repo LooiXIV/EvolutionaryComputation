@@ -1,0 +1,150 @@
+
+Open navigation Open search
+
+    Skip to main content
+    Log in / Register
+
+Association for the Sciences of Limnology and Oceanography
+Close
+Navigation
+Publications
+
+    Limnology and Oceanography
+    Limnology and Oceanography: Letters
+    Limnology and Oceanography: Methods
+    Limnology and Oceanography Bulletin
+    Limnology and Oceanography e-Lectures
+    Limnology and Oceanography: Fluids and Environments
+
+    Join ASLO
+    ASLO.org
+
+    Powered By Wiley Online Library
+
+Search in All ASLO Journals
+Search Search Clear search
+Advertisement
+
+    Go to old article view
+
+Advertisement
+Limnology and Oceanography: Methods
+Explore this journal >
+
+    Limnology and Oceanography: Methods
+    Explore this journal >
+
+Limnology and Oceanography: Methods
+
+    Next article in issue: Chemical archives in fishes beyond otoliths: A review on the use of other body parts as chronological recorders of microchemical constituents for expanding interpretations of environmental, ecological, and life-history changes
+
+    Next article in issue: Chemical archives in fishes beyond otoliths: A review on the use of other body parts as chronological recorders of microchemical constituents for expanding interpretations of environmental, ecological, and life-history changes
+
+View  issue TOC
+Volume 15, Issue 3
+March 2017
+Pages 221–237
+Evaluations of Existing Methods
+Validation methods for plankton image classification systems
+Authors
+
+    Pablo González,
+        Artificial Intelligence Center, University of Oviedo, Gijón, Spain
+    Search for more papers by this author
+    Eva Álvarez,
+        Centro Oceanográfico de Gijón, Instituto Español de Oceanografía, Gijón, Asturias, Spain
+    Search for more papers by this author
+    Jorge Díez,
+        Artificial Intelligence Center, University of Oviedo, Gijón, Spain
+    Search for more papers by this author
+    Ángel López-Urrutia,
+        Centro Oceanográfico de Gijón, Instituto Español de Oceanografía, Gijón, Asturias, Spain
+    Search for more papers by this author
+    Juan José del Coz
+    Corresponding author
+        E-mail address: juanjo@uniovi.es
+        Artificial Intelligence Center, University of Oviedo, Gijón, Spain
+
+        Correspondence: juanjo@uniovi.es
+    Search for more papers by this author
+
+    First published: 27 November 2016 Full publication history
+    DOI: 10.1002/lom3.10151   View/save citation
+    Cited by (CrossRef): 0 articles Check for updates
+    Citation tools
+        Set citation alert
+        Citing literature
+
+Abstract
+
+In recent decades, the automatic study and analysis of plankton communities using imaging techniques has advanced significantly. The effectiveness of these automated systems appears to have improved, reaching acceptable levels of accuracy. However, plankton ecologists often find that classification systems do not work as well as expected when applied to new samples. This paper proposes a methodology to assess the efficacy of learned models which takes into account the fact that the data distribution (the plankton composition of the sample) can vary between the model building phase and the production phase. As opposed to most validation methods that consider the individual organism as the unit of validation, our approach uses a validation-by-sample, which is more appropriate when the objective is to estimate the abundance of different morphological groups. We argue that, in these cases, the base unit to correctly estimate the error is the sample, not the individual. Thus, model assessment processes require groups of samples with sufficient variability in order to provide precise error estimates.
+Continue reading full article
+
+    Enhanced PDF
+    Standard PDF (403.1 KB)
+
+Ancillary
+Article Information
+DOI
+10.1002/lom3.10151
+
+    View/save citation
+
+Format Available
+Full text: HTML | PDF
+
+© 2016 Association for the Sciences of Limnology and Oceanography
+
+Request Permissions
+Publication History
+
+    Issue online: 24 March 2017
+    Version of record online: 27 November 2016
+    Manuscript Accepted: 7 November 2016
+    Manuscript Revised: 5 October 2016
+    Manuscript Received: 23 June 2016
+
+Related content
+Articles related to the one you are viewing
+
+Please enable Javascript to view the related content of this article.
+Citing Literature
+
+    Number of times cited : 0
+
+    PDF
+    PDF
+    Info
+
+Close article support pane
+
+© 2017 Association for the Sciences of Limnology and Oceanography
+
+    Association for the Sciences of Limnology and Oceanography
+
+    Home
+    Career
+    Employment
+
+    Education
+    Meetings
+    Policy
+
+    Publications
+    Students
+    Search
+
+    Wiley
+
+    Help & Support
+    About Us
+
+    Cookies & Privacy
+    Wiley Job Network
+
+    Terms of Service
+    Advertisers & Agents
+
+Powered by Wiley Online Library
+
+Copyright © 1999 - 2017 John Wiley & Sons, Inc. All Rights Reserved

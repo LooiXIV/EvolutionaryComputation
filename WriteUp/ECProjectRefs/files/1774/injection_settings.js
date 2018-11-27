@@ -1,0 +1,1 @@
+/**/jQuery1124011148104349139554_1543175899724({"embedded_pdf_enabled":true,"sharing_enabled":true,"referrer_access_enabled":true,"prices":{"tier_1":600,"tier_2":1500,"tier_3":3800}})

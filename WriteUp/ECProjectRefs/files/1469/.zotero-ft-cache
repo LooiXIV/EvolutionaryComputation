@@ -1,0 +1,169 @@
+
+Skip to main content Skip to sections
+
+This service is more advanced with JavaScript available, learn more at http://activatejavascript.org
+SpringerLink
+Search
+
+    Home
+    Contact us
+    Log in
+
+Where do you prefer to publish? Tell us in our 10 minute survey. Charitable donation for first 1000 responses.
+Artificial Intelligence Review
+Download PDF
+
+Artificial Intelligence Review
+
+February 1998 , Volume 12, Issue 1–3 , pp 177–199 | Cite as
+Automatic Plankton Image Recognition
+
+    Authors
+    Authors and affiliations
+
+    Xiaoou Tang
+    W. Kenneth Stewart
+    He Huang
+    Scott M. Gallager
+    Cabell S. Davis
+    Luc Vincent
+    Marty Marra
+
+Article
+
+    122 Downloads
+    37 Citations
+
+Abstract
+
+Plankton form the base of the food chain in the ocean and are fundamental to marine ecosystem dynamics. The rapid mapping of plankton abundance together with taxonomic and size composition is very important for ocean environmental research, but difficult or impossible to accomplish using traditional techniques. In this paper, we present a new pattern recognition system to classify large numbers of plankton images detected in real time by the Video Plankton Recorder (VPR), a towed underwater video microscope system. The difficulty of such classification is compounded because: 1) underwater images are typically very noisy, 2) many plankton objects are in partial occlusion, 3) the objects are deformable and 4) images are projection variant, i.e., the images are video records of three-dimensional objects in arbitrary positions and orientations. Our approach combines traditional invariant moment features and Fourier boundary descriptors with gray-scale morphological granulometries to form a feature vector capturing both shape and texture information of plankton images. With an improved learning vector quantization network classifier, we achieve 95% classification accuracy on six plankton taxa taken from nearly 2,000 images. This result is comparable with what a trained biologist can achieve by using conventional manual techniques, making possible for the first time a fully automated, at sea-approach to real-time mapping of plankton populations.
+Access to this content is enabled by CORNELL UNIVERSITY Ithaca, NY 14850
+Download to read the full article text
+References
+
+    Davis, C. S. (1982). Processes Controlling Zooplankton Abundance on Georges Bank . Ph. D. Thesis, Boston University. Google Scholar
+    Davis, C. S., Gallager, S. M., Berman, N. S., Haury, L. R. & Strickler, J. R. (1992). The Video Plankton Recorder (VPR): Design and Initial Results. Arch. Hydrobiol. Beith. 36 : 67–81. Google Scholar
+    Davis, C. S., Gallager, S. M. & Solow, A. R. (1992). Microaggregations of Oceanic Plankton Observed by Towed Video Microscopy. Science 257 (10 July): 230–232. Google Scholar
+    Davis, C. S., Gallager, S. M., Marra, M. & Stewart, W. K. (1996). Rapid Visualization of Plankton Abundance and Taxonomic Composition Using the Video Plankton Recorder. DeepSea Research II , Vol. 43, No.7–8, pp. 1947–1970. Google Scholar
+    Fukunaga, K. (1972). Introduction to Statistical Pattern Recognition . Academic Press: New York. Google Scholar
+    Gonzalez, R. C. & Wintz, P. (1987). Digital Image Processing . Addison-Wesley. Google Scholar
+    Hu, M. K. (1962). Visual Pattern Recognition by Moment Invariants. IRE Trans. Information Theory IT8 (Feb.): 179–187. Google Scholar
+    Kauppinen, H., Seppanen, T. & Pietikainen, M. (1995). An Experimental Comparison of Autoregressive and Fourier-Based Descriptors in 2D Shape Classification. IEEE Trans. on Pattern Analysis and Mach. Intell. 17 (2) (Feb.): 201–207. Google Scholar
+    Kohonen, T. (1987). Self-Organization and Associative Memory , 2nd Edition. Springer-Verlag: Berlin. Google Scholar
+    Kohonen, T. (1990). The Self-Organizing Map. Proceedings of the IEEE 78 (9) (Sept.): 1464–1480. Google Scholar
+    Maragos, P. (1989). Pattern Spectrum and Multiscale Shape Representation. IEEE Trans. on Pattern Analysis and Mach. Intell. 11 (7) (July): 701–716. Google Scholar
+    Matheron, G. (1975). Random Sets and Integral Geometry . John Wiley and Sons: New York. Google Scholar
+    Owen, R. W. (1989). Microscale and Finescale Variations of Small Plankton in Coastal and Pelagic Environments. Journal of Marine Research 47 : 197–240. Google Scholar
+    Paffenhofer, G. A., Stewart, T. B. Youngbluth, M. J. & Bailey, T. G. (1991). High-Resolution Vertical Profiles of Pelagic Tunicates. Journal of Plankton Research 13 (5): 971–981. Google Scholar
+    Persoon, E. & Fu, K. S. (1977). Shape Discrimination Using Fourier Descriptors. IEEE Trans. on Sys., Man, and Cyber 7 (3) (Mar.): 170–179. Google Scholar
+    Reeves, A. P., Prokop, R. J., Andrews, S. E. & Kuhl, F. P. (1988). Three-Dimensional Shape Analysis Using Moments and Fourier Descriptors. IEEE Trans. on Pattern Analysis and Mach. Intell. 10 (6) (Nov.): 937–943. Google Scholar
+    Reiss, T. H. (1991). The Revised Fundamental Theorem of Moment Invariants. IEEE Trans. on Pattern Analysis and Mach. Intell. 13 (8) (Aug.): 830–834. Google Scholar
+    Reti, T. & Czinege, I. (1989). Shape Characterization of Particles via Generalized Fourier Analysis. Journal of Microscopy 156 (Pt. 1) (Oct.): 15–32. Google Scholar
+    Schmitt, M. & Mattioli, J. (1991). Shape Recognition Combining Mathematical Morphology and Neural Networks. SPIE: Application of Artificial Neural Network . Orlando, Florida (April). Google Scholar
+    Serra, J. (1982). Image Analysis and Mathematical Morphology . Academic Press: London. Google Scholar
+    Tang, X. (1996). Transform Texture Classification . Ph. D. Thesis, Massachusetts Institute of Technology, the MIT/Woods Hole Oceanographic Institution Joint Program. Google Scholar
+    Teh, C. H. & Chin, R. T. (1991). On Image Analysis by the Methods of Moments. IEEE Trans. on Pattern Analysis and Mach. Intell. 10 (4) (July): 496–513. Google Scholar
+    Vincent, L. (1994a). Fast Opening Functions and Morphological Granulometries. Proc. Image Algebra and Morphological Image Processing , SPIE 2300, 253–267. San Diego (July). Google Scholar
+    Vincent, L. (1994b). Fast Grayscale Granulometry Algorithms. EURASIP Workshop ISMM' 94, Mathematical Morphology and Its Applications to Image Processing , 265–272. France (Sept.). Google Scholar
+    Zahn, C. & Roskies, R. Z. (1972). Fourier Descriptors for Plane Closed Curves. IEEE Trans. on Computers 21 (3) (Mar.): 269–281. Google Scholar
+
+Copyright information
+© Kluwer Academic Publishers 1998
+Authors and Affiliations
+
+    Xiaoou Tang
+        1
+    W. Kenneth Stewart
+        1
+    He Huang
+        1
+    Scott M. Gallager
+        1
+    Cabell S. Davis
+        1
+    Luc Vincent
+        2
+    Marty Marra
+        3
+
+    1. Woods Hole Oceanographic Institution Woods Hole USA
+    2. Xerox Imaging Systems Peabody USA
+    3. Vexcel Corporation Boulder USA
+
+About this article
+
+Cite this article as:
+    Tang, X., Stewart, W.K., Huang, H. et al. Artificial Intelligence Review (1998) 12: 177. https://doi-org.proxy.library.cornell.edu/10.1023/A:1006517211724
+
+    DOI https://doi-org.proxy.library.cornell.edu/10.1023/A:1006517211724
+    Publisher Name Kluwer Academic Publishers
+    Print ISSN 0269-2821
+    Online ISSN 1573-7462
+
+    About this journal
+    Reprints and Permissions
+
+Personalised recommendations
+Cite article
+
+    How to cite?
+    .RIS Papers Reference Manager RefWorks Zotero
+    .ENW EndNote
+    .BIB BibTeX JabRef Mendeley
+
+Share article
+
+    Email
+    Facebook
+    Twitter
+    LinkedIn
+    Shareable link
+
+Download PDF
+Actions
+Download PDF
+Cite article
+
+    How to cite?
+    .RIS Papers Reference Manager RefWorks Zotero
+    .ENW EndNote
+    .BIB BibTeX JabRef Mendeley
+
+Share article
+
+    Email
+    Facebook
+    Twitter
+    LinkedIn
+    Shareable link
+
+Table of contents
+
+    Article
+    Abstract
+    References
+    Copyright information
+    Authors and Affiliations
+    About this article
+
+Cookies
+We use cookies to improve your experience with our site. More information
+Accept
+
+Over 10 million scientific documents at your fingertips
+Switch Edition
+
+    Academic Edition
+    Corporate Edition
+
+    Home
+    Impressum
+    Legal information
+    Accessibility
+    Contact us
+
+Springer Nature
+
+© 2017 Springer International Publishing AG. Part of Springer Nature .
+
+Not logged in CORNELL UNIVERSITY Ithaca, NY 14850 (8200595982) - Center for Research LIbraries c/o NERL (8200828607) 132.236.27.111
