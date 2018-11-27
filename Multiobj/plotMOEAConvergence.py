@@ -24,7 +24,7 @@ fm.plotMOEAConverge(NSGAIIConverge)
 fm.plotMOEAConverge(SPEA2Converge)
 
 # Read in the DE concergence data
-infile = open('NSGAIIConverge.pkl', 'rb')
+infile = open('DEConvergence.pkl', 'rb')
 DEConverge = pkl.load(infile)
 # Plot the single objective formulation to see convergence
 Iters = []
