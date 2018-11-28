@@ -10,6 +10,8 @@ import pickle as pkl
 from scipy.optimize import minimize
 
 seedNums = np.arange(10, 41)
+
+os.chdir("Data/")
 # read in smoothed data: rep1
 smoothDataFile = open('rep1smooth.csv', 'r')
 next(smoothDataFile)
@@ -79,13 +81,9 @@ for sal in Salinities:
                             args=(y0, time, chData, False, True))
         NMDict[seedNum] = solNM
         LBDict[seedNum] = solLB
-    SalNMDict[sal] = NMDict[seedNum]
-    SalLBDict[sal] = LBDict[seedNum]
+    SalNMDict[sal] = NMDict
+    SalLBDict[sal] = LBDict
 
-#for k in NMDict.keys():
-#    print('Nelder-Mead', NMDict[k].x)
-#    print('L-BFGS-B', LBDict[k].x)
-os.chdir("Data/")
 with open('GradientBestNM.pkl', 'wb') as outfile:
     pkl.dump(SalNMDict, outfile)
 

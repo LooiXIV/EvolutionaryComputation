@@ -16,9 +16,17 @@ NSGAII = pkl.load(infile)
 infile = open("BestSolutionsSPEA2.pkl", "rb")
 SPEA2 = pkl.load(infile)
 
-# Read in 
+# Read in SO DE 
 infile = open("SalDESolutions.pkl", "rb")
 DE = pkl.load(infile)
+
+# Read in Gradient Descent
+infile = open("GradientBestLB.pkl", "rb")
+LB = pkl.load(infile)
+
+# Read in Gradient Descent Nelder-Mead
+infile = open("GradientBestNM.pkl", "rb")
+NM = pkl.load(infile)
 
 salinities = [3, 16, 35, 45]
 
@@ -51,6 +59,7 @@ for ns, sal in enumerate(salinities):
     #SPEA2pos = ticksPos+0.15
     #plt.figure(figsize=(10,5))
     ticksPos = np.arange(1, parmsNSGAII.shape[1]+1)
+
 
     #fig, axes = plt.subplots(1, len(varsFit), figsize=(15, 5))
     fig.subplots_adjust(wspace=0.5)
