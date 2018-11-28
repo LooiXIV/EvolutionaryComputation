@@ -1,5 +1,6 @@
 #!/anaconda3/bin/env python3
 # -*-utf-8-*-
+import os
 import numpy as np
 import scipy.integrate as inte
 import matplotlib.pyplot as plt
@@ -29,7 +30,7 @@ numCols = len(chData[1,:])
 
 # clip the data organize into the the separate salinities
 # and normalize the chlorella data to the correct units
-Salinities = [3]#, 16, 35, 45]
+Salinities = [3, 16, 35, 45]
 chlInd = np.arange(0,numCols+1,2)
 rotInd = np.arange(1,numCols+1,2)
 chData = chData[0:row,:]
@@ -84,7 +85,7 @@ for sal in Salinities:
 #for k in NMDict.keys():
 #    print('Nelder-Mead', NMDict[k].x)
 #    print('L-BFGS-B', LBDict[k].x)
-
+os.chdir("Data/")
 with open('GradientBestNM.pkl', 'wb') as outfile:
     pkl.dump(SalNMDict, outfile)
 

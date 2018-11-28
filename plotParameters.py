@@ -58,7 +58,7 @@ for ns, sal in enumerate(salinities):
     #for n, ax in enumerate(axes):
     for n in np.arange(0, len(varsFit)):
         if sal == 3:
-            axes[ns, n].set_title(varsFit[n], fontsize=12)
+            axes[ns, n].set_title(varsFit[n], fontsize=14, y=1.1)
         
 
         Nvals = parmsNSGAII[:,n]
@@ -76,6 +76,9 @@ for ns, sal in enumerate(salinities):
         else:
             axes[ns, n].set_xticks([])
             axes[ns, n].set_xticklabels([])
+        if n == 0:
+            axes[ns, n].set_ylabel(str(sal)+r"$gL^{-1}$", labelpad=25,
+                                   rotation='horizontal', fontsize=12)
     #plt.boxplot(parmsNSGAII, positions=NSGAIIpos, sym="", widths=0.28)
     #plt.boxplot(parmsSPEA2, positions=SPEA2pos, sym="", widths=0.28)
     #plt.xticks(ticksPos, varLabs)
