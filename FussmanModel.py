@@ -398,7 +398,7 @@ def makeNoisyData(y0, t, parms, sigma):
     Synthetically generate data.
     add noise to the data if sigma greater than 0.
     """
-    genData = inte.odeint(fm.Fussman_Org, y0, t, args=(parms,))
-    noisyData = genData + np.random.normal(0, sigma, genData.shape)
+    genData = inte.odeint(Fussman_Org, y0, t, args=(parms,))
+    noisyData = genData + np.random.lognormal(0, sigma, genData.shape)
     return noisyData
 
