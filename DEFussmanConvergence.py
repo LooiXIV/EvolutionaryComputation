@@ -1,5 +1,6 @@
 #!/anaconda3/bin/env python3
 # -*-utf-8-*-
+import os
 import numpy as np
 import scipy.integrate as inte
 import matplotlib.pyplot as plt
@@ -7,6 +8,8 @@ import FussmanModel as fm
 import random as rd
 import pickle as pkl
 from scipy.optimize import differential_evolution as DE
+
+os.chdir("Data/")
 
 seedNum = 10
 seedNums = np.arange(10, 41)
@@ -69,7 +72,7 @@ for sal in Salinities:
         DEConverge[seedNum] = {}
         for e in numIters:
 
-            solutions = DE(fm.FitnessFuncSO, bounds, maxiter=e, popsize=1000,
+            solutions = DE(fm.FitnessFuncSO, bounds, maxiter=e, popsize=100,
                            args=(y0, time, chData, False, True))
             DEConverge[seedNum][e] = solutions 
 

@@ -266,6 +266,7 @@ def Fussman_Org(y0, t, parms):
 
 
 # The fitness functions
+########################################################################
 def FitnessFuncSO(parms, y0, t, data, normMSE=False, RMSE=False):
     """
     The Fitness Function which houses different fitness functions combining 
@@ -336,6 +337,9 @@ def FittnessFuncMO(parms, y0, t, data, normMSE=False, RMSE=False):
 
     return [MSE_rotifers, MSE_chlorella]
 
+
+# Plotting Functions
+########################################################################
 def PlotFussman(t, y1, y2):
     # plot the simulation
     fig, ax1 = plt.subplots()
@@ -387,4 +391,14 @@ def plotMOEAConverge(MOEAConverge, xlims=[0,2.0], ylims=[0,2.0]):
         plt.legend(paretoLabs, loc='upper left')
         plt.show()
 
+# Data Generating Functions
+########################################################################
+def makeNoisyData(y0, t, parms, sigma):
+    """
+    Synthetically generate data.
+    add noise to the data if sigma greater than 0.
+    """
+    genData = inte.odeint(fm.Fussman_Org, y0, t, args=(parms,))
+    noisyData = genData + np.random.normal(0, sigma, genData.shape)
+    return noisyData
 

@@ -1,5 +1,6 @@
 #!/anaconda3/bin/env python3
 # -*-utf-8-*-
+import os
 import numpy as np
 import scipy.integrate as inte
 import matplotlib.pyplot as plt
@@ -9,6 +10,7 @@ import pickle as pkl
 import time as timer
 from scipy.optimize import differential_evolution as DE
 
+os.chdir("Data/")
 PlotSol = False 
 seedNums = np.arange(10, 41)
 #seedNums = [10]
