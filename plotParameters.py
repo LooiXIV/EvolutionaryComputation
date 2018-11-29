@@ -112,6 +112,6 @@ for ns, sal in enumerate(salinities):
     #plt.boxplot(parmsNSGAII, positions=NSGAIIpos, sym="", widths=0.28)
     #plt.boxplot(parmsSPEA2, positions=SPEA2pos, sym="", widths=0.28)
     #plt.xticks(ticksPos, varLabs)
-
+plt.savefig("parameterFig.png", dpi=600)
 plt.show()
 
