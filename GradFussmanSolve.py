@@ -75,10 +75,13 @@ for sal in Salinities:
         rd.seed(seedNum)
 
         solNM = minimize(fm.FitnessFuncSO, initGuess, method='Nelder-Mead', 
-                            args=(y0, time, chData, False, True))
+                         bounds=bounds, 
+                         args=(y0, time, chData, False, True))
 
-        solLB = minimize(fm.FitnessFuncSO, initGuess, method='L-BFGS-B', 
-                            args=(y0, time, chData, False, True))
+        solLB = minimize(fm.FitnessFuncSO, initGuess, method='L-BFGS-B',
+                         bounds=bounds,
+                         args=(y0, time, chData, False, True))
+
         NMDict[seedNum] = solNM
         LBDict[seedNum] = solLB
     SalNMDict[sal] = NMDict
