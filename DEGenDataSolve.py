@@ -38,9 +38,7 @@ for sig in Sigmas:
 
         t1 = timer.clock()
         
-        #solutions = DE(fm.FitnessFuncSO, bounds, popsize=100, maxiter=100,
-        #               args=(y0, time, chData, False, True))
-        solutions = DE(fm.FitnessFuncSO, bounds, popsize=10, maxiter=10,
+        solutions = DE(fm.FitnessFuncSO, bounds, popsize=100, maxiter=100,
                        args=(y0, time, chData, False, True))
         t2 = timer.clock()
         SigDESol[sig][seedNum] = solutions
@@ -48,6 +46,6 @@ for sig in Sigmas:
         print("Elapsed Time (seconds): "+str(t2-t1))
     print("~"*60)
 
-with open('SalDESolutions.pkl', 'wb') as outfile:
+with open('Data/SigDESolutions.pkl', 'wb') as outfile:
     pkl.dump(SigDESol, outfile)
 
