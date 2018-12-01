@@ -11,63 +11,33 @@ from scipy.optimize import minimize
 
 seedNums = np.arange(10, 41)
 
-os.chdir("Data/")
-# read in smoothed data: rep1
-smoothDataFile = open('rep1smooth.csv', 'r')
-next(smoothDataFile)
-
-
-chData = np.zeros((50,8))
-for row, line in enumerate(smoothDataFile):
-    line = line.strip('\n')
-    rowVals = line.split(',')
-    for col, colVal in enumerate(rowVals):
-        try:
-            chData[row, col] = colVal
-        except ValueError:
-            chData[row, col] = 'NaN'
-
-days = np.arange(0, row)
-numCols = len(chData[1,:])
-
-# clip the data organize into the the separate salinities
-# and normalize the chlorella data to the correct units
-Salinities = [3, 16, 35, 45]
-chlInd = np.arange(0,numCols+1,2)
-rotInd = np.arange(1,numCols+1,2)
-chData = chData[0:row,:]
-
-ChDataDict = {}
-for ind, sal in enumerate(Salinities):
-    ChDataDict[sal] = np.zeros((row, 2))
-    # Chlorella
-    ChDataDict[sal][:,0] = chData[:,chlInd[ind]]/(10000.0)
-    # Rotifers
-    ChDataDict[sal][:,1] = chData[:,rotInd[ind]]
+# read in the generated Data
+with open("Data/GeneratedData.pkl", "rb") as infile:
+    GenData = pkl.load(infile)
 
 # single objective Gradient Descent with RMSE fitness function
 ###############################################################
-bounds = [(0.0,1.0), 
-          (1.0, 10.0), (1.0, 25.0), 
+bounds = [(1.0, 10.0), (1.0, 25.0), 
           (0.01, 0.50), (0.0, 0.9), (0.1, 10.0), (1.0, 50.0)]
 
-initGuess = [0,
-            1.0, 1.0, 
-            0.01, 0.0, 0.1, 1.0]
+initGuess = [1.0, 1.0, 
+             0.01, 0.0, 0.1, 1.0]
 Ni = 80
 C = 2.5
 R = 0.7
 
 y0 = [Ni, C, R]
-time = np.arange(0, 37)
+seedNums = np.arange(10, 41)
+Sigmas = [0, 0.5, 1.25, 1.50]
+time = np.arange(0, 40)
 
-SalNMDict = {}
-SalLBDict = {}
+SigNMDict = {}
+SigLBDict = {}
 
-for sal in Salinities: 
+for sig in Sigmas: 
     NMDict = {}
     LBDict = {}
-    chData = ChDataDict[sal]
+    chData = GenData[sig]
     
     for seedNum in seedNums:
 
@@ -84,12 +54,12 @@ for sal in Salinities:
 
         NMDict[seedNum] = solNM
         LBDict[seedNum] = solLB
-    SalNMDict[sal] = NMDict
-    SalLBDict[sal] = LBDict
+    SigNMDict[sig] = NMDict
+    SalLBDict[sig] = LBDict
 
-with open('GradientBestNM.pkl', 'wb') as outfile:
-    pkl.dump(SalNMDict, outfile)
+with open('Data/GradientBestNMGenData.pkl', 'wb') as outfile:
+    pkl.dump(SigNMDict, outfile)
 
-with open('GradientBestLB.pkl', 'wb') as outfile:
-    pkl.dump(SalLBDict, outfile)
+with open('Data/GradientBestLBGenData.pkl', 'wb') as outfile:
+    pkl.dump(SigLBDict, outfile)
 

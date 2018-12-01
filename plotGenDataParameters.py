@@ -9,26 +9,26 @@ import matplotlib.pyplot as plt
 os.chdir('Data/')
 
 # Read in the MO SPEA2 data
-infile = open("BestSolutionsNSGAII.pkl", "rb")
+infile = open("BestSolutionsNSGAIIGenData.pkl", "rb")
 NSGAII = pkl.load(infile)
 
 # Read in the MO SPEA2 data
-infile = open("BestSolutionsSPEA2.pkl", "rb")
+infile = open("BestSolutionsSPEA2GenData.pkl", "rb")
 SPEA2 = pkl.load(infile)
 
 # Read in SO DE 
-infile = open("SalDESolutions.pkl", "rb")
+infile = open("SigDESolutions.pkl", "rb")
 DE = pkl.load(infile)
 
 # Read in Gradient Descent
-#infile = open("GradientBestLB.pkl", "rb")
+#infile = open("GradientBestLBGenData.pkl", "rb")
 #LB = pkl.load(infile)
 
 # Read in Gradient Descent Nelder-Mead
-infile = open("GradientBestNM.pkl", "rb")
+infile = open("GradientBestNMGenData.pkl", "rb")
 NM = pkl.load(infile)
 
-salinities = [3, 16, 35, 45]
+Sigmas = [0, 0.5, 1.25, 1.50]
 
 varsFit = [r"$\beta_C$", r"$K_c$", r"$e$", r"$m$", r"$\beta_R$", r"$K_r$"] 
 orgEsts = [3.3, 4.30, 0.25, 0.3, 3.3, 15]
@@ -40,12 +40,12 @@ bounds = [[0.01, 10.0], [1.0, 50.0],
 # loop through the salinities
 fig, axes = plt.subplots(4, len(varsFit), figsize=(15, 8))
 
-for ns, sal in enumerate(salinities):
-    salSPEA2 = SPEA2[sal]
-    salNSGAII = NSGAII[sal]
-    salDE = DE[sal]
-    #salLB = LB[sal]
-    salNM = NM[sal]
+for ns, sig in enumerate(Sigmas):
+    salSPEA2 = SPEA2[sig]
+    salNSGAII = NSGAII[sig]
+    salDE = DE[sig]
+    #salLB = LB[sig]
+    salNM = NM[sig]
 
     allSolsSPEA2 = salSPEA2["End_Solutions"]
     allSolsNSGAII = salNSGAII["End_Solutions"]
@@ -64,10 +64,9 @@ for ns, sal in enumerate(salinities):
     
     fig.subplots_adjust(wspace=0.5)
 
-    #for n, ax in enumerate(axes):
     for n in np.arange(0, len(varsFit)):
 
-        if sal == 3:
+        if sig == 0:
 
             arrow_args = dict(arrowstyle="-")
             # horizontal line
@@ -84,15 +83,14 @@ for ns, sal in enumerate(salinities):
         NMvals = parmsNM[:,n]
         #LBvals = parmsLB[:,n]
         #axes[ns, n].boxplot([Nvals, Svals, Dvals, LBvals, NMvals])#, 
-        axes[ns, n].boxplot([Nvals, Svals, Dvals, NMvals])#, 
+        axes[ns, n].boxplot([Nvals, Svals, Dvals, NMvals])#, NMvals])#, 
                             #widths=0.2)
         #ax.boxplot(Svals, sym="", widths=0.28)
         axes[ns, n].axhline(orgEsts[n])
         axes[ns, n].set_ylim((bounds[n][0]-2, bounds[n][1]+2))
 
-        if sal == 45:
-            #axes[ns, n].set_xticks(np.arange(1, 6))
-            axes[ns, n].set_xticks(np.arange(1, 5))
+        if sig == 1.50:
+            axes[ns, n].set_xticks(np.arange(1, 6))
             axes[ns, n].set_xticklabels(
                         #["NSGAII", "SPEA2", "DE", "L-BFGS-B", "Nelder-Mead"],
                         ["NSGAII", "SPEA2", "DE", "Nelder-Mead"],
@@ -102,12 +100,13 @@ for ns, sal in enumerate(salinities):
             axes[ns, n].set_xticks([])
             axes[ns, n].set_xticklabels([])
         if n == 0:
-            axes[ns, n].set_ylabel(str(sal)+r"$gL^{-1}$", labelpad=30,
+            axes[ns, n].set_ylabel(r"\sigma"+str(sig), labelpad=30,
                                    rotation='horizontal', fontsize=12)
     #fig.clf()
     #plt.boxplot(parmsNSGAII, positions=NSGAIIpos, sym="", widths=0.28)
     #plt.boxplot(parmsSPEA2, positions=SPEA2pos, sym="", widths=0.28)
     #plt.xticks(ticksPos, varLabs)
-plt.savefig("parameterFig.png", dpi=600)
+plt.savefig("SigmaParameterFig.png", dpi=600)
 #plt.show()
+
 
