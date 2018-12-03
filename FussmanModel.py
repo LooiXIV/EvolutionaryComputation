@@ -367,7 +367,7 @@ def PlotFussmanTest(t, y1, y2, d1, d2):
     plt.show()
 
 
-def plotMOEAConverge(MOEAConverge, xlims=[0,2.0], ylims=[0,2.0]):
+def plotMOEAConverge(MOEAConverge, xlims=[0,3.0], ylims=[0,3.0]):
     """
     plot covergence of the MOEA methods
     """
@@ -390,7 +390,6 @@ def plotMOEAConverge(MOEAConverge, xlims=[0,2.0], ylims=[0,2.0]):
         plt.ylabel('Rotifer RMSE')
         plt.legend(paretoLabs, loc='upper left')
         plt.show()
-
 # Data Generating Functions
 ########################################################################
 def makeNoisyData(y0, t, parms, sigma):

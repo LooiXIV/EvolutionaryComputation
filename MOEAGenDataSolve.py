@@ -13,6 +13,8 @@ seedVal = 10
 AlgosToUse = [NSGAII, SPEA2] 
 namesModifier = ['NSGAII', 'SPEA2']
 
+AlgoToUse = NSGAII
+nameModifier = 'NSGAII'
 # read in the generated Data
 with open("Data/GeneratedData.pkl", "rb") as infile:
     GenData = pkl.load(infile)
@@ -33,45 +35,46 @@ time = np.arange(0, 40)
 Sigmas = [0, 0.5, 1.25, 1.50]
 
 
+#for AlgoToUse, nameModifier in zip(AlgosToUse, namesModifier):
+
 SolDict = {}
-for AlgoToUse, nameModifier in zip(AlgosToUse, namesModifier):
-    for sig in Sigmas:
-        print("Sigma = "+str(sig))    
-        chData = GenData[sig]
-        
-        # define the problem
-        fitnessFunc = Problem(6, 2)
-        fitnessFunc.types = bounds
-        fitnessFunc.function = functools.partial(fm.FittnessFuncMO, 
-                                        y0=y0, t=time, data=chData,
-                                        RMSE=True)
+for sig in Sigmas:
+    print("Sigma = "+str(sig))    
+    chData = GenData[sig]
+    
+    # define the problem
+    fitnessFunc = Problem(6, 2)
+    fitnessFunc.types = bounds
+    fitnessFunc.function = functools.partial(fm.FittnessFuncMO, 
+                                    y0=y0, t=time, data=chData,
+                                    RMSE=True)
 
-        algorithm = AlgoToUse(fitnessFunc)
-        algorithm.population = 1000
-        algorithm.run(100000)
-        obj1 = []
-        obj2 = []
+    algorithm = AlgoToUse(fitnessFunc)
+    algorithm.population = 1000
+    algorithm.run(100000)
+    obj1 = []
+    obj2 = []
 
-        # reorganize the results to the console/add to list
-        for r in algorithm.result:
-            obj1.append(r.objectives[0])
-            obj2.append(r.objectives[1])
+    # reorganize the results to the console/add to list
+    for r in algorithm.result:
+        obj1.append(r.objectives[0])
+        obj2.append(r.objectives[1])
 
-        # find point closest to the "ideal" point
-        obj_dist = []
-        for o1, o2 in zip(obj1, obj2):
-            obj_dist.append(np.sqrt(o1**2 + o2**2))
+    # find point closest to the "ideal" point
+    obj_dist = []
+    for o1, o2 in zip(obj1, obj2):
+        obj_dist.append(np.sqrt(o1**2 + o2**2))
 
-        resultPos = np.nanargmin(obj_dist)
+    resultPos = np.nanargmin(obj_dist)
 
-        SolDict[sig] = {}
-        SolDict[sig]['Best_Solution'] = algorithm.result[resultPos].variables
-        SolDict[sig]['End_Solutions'] = algorithm.result
-        paretoSet = np.zeros((len(obj1),2))
-        paretoSet[:,0] = obj1
-        paretoSet[:,1] = obj2
-        SolDict[sig]['Pareto_Set'] = paretoSet 
+    SolDict[sig] = {}
+    SolDict[sig]['Best_Solution'] = algorithm.result[resultPos].variables
+    SolDict[sig]['End_Solutions'] = algorithm.result
+    paretoSet = np.zeros((len(obj1),2))
+    paretoSet[:,0] = obj1
+    paretoSet[:,1] = obj2
+    SolDict[sig]['Pareto_Set'] = paretoSet 
 
-    with open('Data/BestSolutions'+nameModifier+'GenData.pkl', 'wb') as outfile:
-        pkl.dump(SolDict, outfile)
+with open('Data/BestSolutions'+nameModifier+'GenData2.pkl', 'wb') as outfile:
+    pkl.dump(SolDict, outfile)
 

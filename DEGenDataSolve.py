@@ -46,6 +46,6 @@ for sig in Sigmas:
         print("Elapsed Time (seconds): "+str(t2-t1))
     print("~"*60)
 
-with open('SalDESolutions.pkl', 'wb') as outfile:
+with open('Data/SigDESolutions.pkl', 'wb') as outfile:
     pkl.dump(SigDESol, outfile)
 
