@@ -65,8 +65,8 @@ if plotMOEA:
     plt.legend(paretoLabs, loc=9, ncol=len(paretoLabs), 
                bbox_to_anchor=(-1.3, -0.25), 
                title="Number of Function Evaluations")
-    plt.show()    
-
+    #plt.show()    
+    plt.savefig("Figures/MOEAConvergence.png", dpi=600)
     # Plot the Pareto sets of the multi-objective formulation
     # to see convergence of SPEA2
 
@@ -123,5 +123,6 @@ for nc, cat in enumerate(DEConverge.keys()):
 plt.legend(labels=[str(c)+r"$gL^{-1}$"for c in Categories])
 plt.xlabel('Number of Function Evaluations')
 plt.ylabel('Predator RMSE + Prey RMSE')
-plt.show()
+plt.savefig("Figures/DESOConvergence.png", dpi=600)
+#plt.show()
 

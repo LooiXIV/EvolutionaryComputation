@@ -389,7 +389,7 @@ def plotMOEAConverge(MOEAConverge, xlims=[0,3.0], ylims=[0,3.0]):
         plt.xlabel('Chlorella RMSE')
         plt.ylabel('Rotifer RMSE')
         plt.legend(paretoLabs, loc='upper left')
-
+        plt.show()
 # Data Generating Functions
 ########################################################################
 def makeNoisyData(y0, t, parms, sigma):
