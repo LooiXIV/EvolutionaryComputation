@@ -55,7 +55,7 @@ for sig in Sigmas:
         NMDict[seedNum] = solNM
         LBDict[seedNum] = solLB
     SigNMDict[sig] = NMDict
-    SalLBDict[sig] = LBDict
+    SigLBDict[sig] = LBDict
 
 with open('Data/GradientBestNMGenData.pkl', 'wb') as outfile:
     pkl.dump(SigNMDict, outfile)
