@@ -51,7 +51,10 @@ NM = pkl.load(infile)
 salinities = [3, 16, 35, 45]
 
 varsFit = [r"$\beta_C$", r"$K_c$", r"$e$", r"$m$", r"$\beta_R$", r"$K_r$"] 
-orgEsts = [3.3, 4.30, 0.25, 0.3, 3.3, 15]
+orgEsts = [[3.3, 4.30, 0.25, 0.30, 1.00, 15],
+           [3.3, 4.30, 0.25, 0.55, 2.16, 15],
+           [3.3, 4.30, 0.25, 0.20, 2.40, 15],
+           [3.3, 4.30, 0.25, 0.30, 1.00, 15]]
 
 bounds = [[0.01, 10.0], [1.0, 50.0], 
           [0.01, 5.0], [0.0, 10.0], [0.1, 50.0], [0.01, 50.0]]
@@ -79,7 +82,7 @@ for ns, sal in enumerate(salinities):
     parmsNM = np.array([salNM[seed].x for seed in salNM.keys()])
     parmsLB = np.array([salLB[seed].x for seed in salLB.keys()])
     
-    fig.subplots_adjust(wspace=0.5)
+    fig.subplots_adjust(wspace=0.25, bottom=0.15, top=0.95)
 
     for n in np.arange(0, len(varsFit)):
 
@@ -87,12 +90,12 @@ for ns, sal in enumerate(salinities):
 
             arrow_args = dict(arrowstyle="-")
             # horizontal line
-            plt.annotate("", xy=(-38.4, 255), xytext=(6, 255), arrowprops=arrow_args,
-                        annotation_clip=False)
+            #plt.annotate("", xy=(-38.4, 255), xytext=(6, 255), arrowprops=arrow_args,
+            #            annotation_clip=False)
             # vertical line
-            plt.annotate("", xy=(-38.3, -35), xytext=(-38.3, 255.75), arrowprops=arrow_args,
-                        annotation_clip=False)
-            axes[ns, n].set_title(varsFit[n], fontsize=14, y=1.2)
+            #plt.annotate("", xy=(-38.3, -5.0), xytext=(-38.3, 255.75), arrowprops=arrow_args,
+            #            annotation_clip=False)
+            axes[ns, n].set_title(varsFit[n], fontsize=20, y=1)
         
         Nvals = parmsNSGAII[:,n]
         Svals = parmsSPEA2[numPlot,n] 
@@ -101,23 +104,24 @@ for ns, sal in enumerate(salinities):
         NMvals = parmsNM[:,n]
         LBvals = parmsLB[:,n]
         axes[ns, n].boxplot([Nvals, Svals, Dvals, LBvals, NMvals], 
-                            widths=0.2)
-        axes[ns, n].axhline(orgEsts[n])
+                            widths=0.6)
+        axes[ns, n].axhline(orgEsts[ns][n])
         axes[ns, n].set_ylim((bounds[n][0]-2, bounds[n][1]+2))
 
         if sal == 45:
             axes[ns, n].set_xticks(np.arange(1, 6))
             axes[ns, n].set_xticklabels(
                         ["NSGAII", "SPEA2", "DE", "L-BFGS-B", "Nelder-Mead"],
-                        fontsize=10, rotation=45, ha="right")
+                        fontsize=15, rotation=45, ha="right")
 
         else:
             axes[ns, n].set_xticks([])
             axes[ns, n].set_xticklabels([])
         if n == 0:
-            axes[ns, n].set_ylabel(str(sal)+r"$gL^{-1}$", labelpad=30,
-                                   rotation='horizontal', fontsize=12)
+            axes[ns, n].set_ylabel(str(sal)+r"$gL^{-1}$", labelpad=5,
+                                   rotation='horizontal', fontsize=20,
+                                   horizontalalignment="right")
 
 plt.savefig("Figures/ParameterFig.png", dpi=600)
-#plt.show()
+plt.show()
 
