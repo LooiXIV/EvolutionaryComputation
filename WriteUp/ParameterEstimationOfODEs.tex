@@ -15,6 +15,7 @@
 \usepackage{soul}
 \usepackage{listings}
 \usepackage{rotating}
+\usepackage{pdflscape}
 \usepackage[utf8]{inputenc}
 \usepackage{listings}
 \usepackage{natbib}
@@ -81,7 +82,12 @@ By square rooting the MSE value, we obtain the original units of the predator an
 
 As a control we compared the results of the GAs to two gradient descent algorithms: Nelder-Mead (NM) and the Limited Memory Broyden–Fletcher–Goldfarb–Shanno (BFGS). We ran the gradient descent algorithms at 30 different random seeds to get a variety of solutions. The SOBE were run at the same 30 random seeds with a population of 1000 individuals and were allowed to run until the function self terminated. The best inidividual at the end of these thirty runs was taken as data to explore how parameters vary among the best solutions.
 
-Lastly, the MO algorithms were run for 100,000 generations with a population of 1,000 individuals. The final pareto set of solutions were taken as best solutions and their parameter sets were taken as data to explore how parameters vary among the best solutions.
+The MO algorithms were run for 100,000 generations with a population of 1,000 individuals. The best 31 individuals (15 individuals on either side of the best solution) of the final Pareto set of solutions were taken as best solutions and these parameter sets were used as the data to explore how parameters vary among the best solutions. Lastly, for all algorithms used, the range of acceptable parameter values were bounded so that parameter values estimated by our algorithms remained plausible, or at least within the range observed in our studies \ref{table:Bounds}. 
+
+% table here about the parameter bounds we used. 
+
+
+
 
 
 \section{Results}
@@ -96,4 +102,40 @@ Lastly, the MO algorithms were run for 100,000 generations with a population of 
 
 \onecolumn
 % figures and tables go here
+% table 1 Parameter Bounds and Sources
+\begin{table}[ht]
+
+    \caption{Parameter bounds used in all optimization techniques discussed in this paper. Included are the sources for the parameter bounds and our initial estimates (these are unpublished data based on experiments).}
+    \begin{tabular}{l l}
+    	\label{table:Bounds} % table for the Bounds
+        	\begin{tabular}{c c c}
+            \cline{1-3}
+        	Parameter & Bound & Source \\
+            \cline{1-3}
+        	$\beta_C$ & 1.0 25.0 & \cite{fussmann_crossing_2000}  \\
+            $K_c$ & 1.0 - 10.0 & \\
+            $e$ & 0.01 - 0.5 & \\
+            $m$ & 0.0 - 1.0 & \\
+            $\beta_R$ & 1.0 - 25.0  & \\
+            $K_r$ & 1.0 - 50.0 & \\
+            \cline{1-3}
+    	\end{tabular}
+    	&
+    	\label{table:InitEsts} % table for the initial estimates 
+        	\begin{tabular}{c c c c c}
+            \cline{1-5}
+        	Parameter & 3$gL^{-1}$ & 16$gL^{-1}$ & 35$gL^{-1}$& 45$gL^{-1}$ \\
+            \cline{1-5}
+        	$\beta_C$ & & & & \\
+            $K_c$ & & & & \\
+            $e$ & & & & \\
+            $m$ & & & & \\
+            $\beta_R$ & & & & \\
+            $K_r$ & & & & \\
+            \cline{1-5}
+    	\end{tabular}
+    	
+    \end{tabular}
+\end{table}
+
 \end{document}
