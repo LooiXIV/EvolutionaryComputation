@@ -46,6 +46,8 @@ if plotMOEA:
                     obj2.append(objs[1])
 
                 if r == 0:
+                    #axes[r,c].set_title(r"$\sigma$ = "+str(sal))
+                    axes[r,c].set_title(str(sal)+r"$gL^{-1}$")
                     axes[r,c].tick_params(axis='x', which='both', bottom=False,
                                    top=False, labelbottom=False)
                 else:
@@ -69,8 +71,8 @@ if plotMOEA:
     plt.savefig("Figures/MOEAConvergence.png", dpi=600)
     # Plot the Pareto sets of the multi-objective formulation
     # to see convergence of SPEA2
-
-
+    plt.close()
+    
 # Plot the single objective DE to see convergence
 ###########################################################
 # Read in the DE concergence data
