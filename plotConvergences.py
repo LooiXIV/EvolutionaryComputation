@@ -23,6 +23,7 @@ xlims=[0,2.0]
 ylims=[0,3.0]
 markerToUse = ["o", "s", "D", "X", "^", "v", "P", "*"]
 colorToUse = ["b", "r", "lime", "m", "cyan", "darkslategray", "k", "y"]
+algoUsed = ["NSGAII", "SPEA2"]
 if plotMOEA:
 
     fig, axes = plt.subplots(2, len(Categories), figsize=(15, 8))
@@ -47,13 +48,14 @@ if plotMOEA:
 
                 if r == 0:
                     #axes[r,c].set_title(r"$\sigma$ = "+str(sal))
-                    axes[r,c].set_title(str(sal)+r"$gL^{-1}$")
+                    axes[r,c].set_title(str(sal)+r"$gL^{-1}$", fontsize=20)
                     axes[r,c].tick_params(axis='x', which='both', bottom=False,
                                    top=False, labelbottom=False)
                 else:
-                    axes[r,c].set_xlabel('Chlorella Error')
+                    axes[r,c].set_xlabel('Chlorella Error', fontsize=20)
                 if c == 0:
-                    axes[r,c].set_ylabel('Rotifer Error')
+                    axes[r,c].set_ylabel('Rotifer Error', fontsize=20)
+                    axes[r,c].text(-1.4, 1.25, algoUsed[r], rotation=0, fontsize=20)
                 elif c > 0:
                     axes[r,c].set_yticklabels([])
                     axes[r,c].set_yticks([])
@@ -64,14 +66,15 @@ if plotMOEA:
                 axes[r,c].set_ylim(ylims)
                 pointChooser += 1 
                 
-    plt.legend(paretoLabs, loc=9, ncol=len(paretoLabs), 
-               bbox_to_anchor=(-1.3, -0.25), 
+    leg = plt.legend(paretoLabs, loc=9, ncol=len(paretoLabs), fontsize=15,
+               bbox_to_anchor=(-1., -0.25), 
                title="Number of Function Evaluations")
+    plt.setp(leg.get_title(), fontsize=17)
     #plt.show()    
     plt.savefig("Figures/MOEAConvergence.png", dpi=600)
     # Plot the Pareto sets of the multi-objective formulation
     # to see convergence of SPEA2
-    plt.close()
+    plt.show()
     
 # Plot the single objective DE to see convergence
 ###########################################################
