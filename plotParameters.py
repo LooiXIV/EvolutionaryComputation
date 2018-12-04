@@ -4,6 +4,7 @@ import os
 import pickle as pkl
 import numpy as np
 import matplotlib.pyplot as plt
+import scipy.stats as stats
 
 # function to sort and rank the best solutions according to their
 # distance to the ideal point in the solution space
@@ -103,11 +104,11 @@ for ns, sal in enumerate(salinities):
         Dvals = parmsDE[:,n]
         NMvals = parmsNM[:,n]
         LBvals = parmsLB[:,n]
-        axes[ns, n].boxplot([Nvals, Svals, Dvals, LBvals, NMvals], 
+        axes[ns, n].violinplot([Nvals, Svals, Dvals, LBvals, NMvals], 
                             widths=0.6)
         axes[ns, n].axhline(orgEsts[ns][n])
         axes[ns, n].set_ylim((bounds[n][0]-2, bounds[n][1]+2))
-
+        print(stats.kruskal(Nvals, Svals, Dvals, LBvals, NMvals))
         if sal == 45:
             axes[ns, n].set_xticks(np.arange(1, 6))
             axes[ns, n].set_xticklabels(

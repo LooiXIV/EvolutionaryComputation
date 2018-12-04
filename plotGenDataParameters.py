@@ -4,7 +4,7 @@ import os
 import pickle as pkl
 import numpy as np
 import matplotlib.pyplot as plt
-
+import scipy.stats as stats
 # function to sort and rank the best solutions according to their
 # distance to the ideal point in the solution space
 def RankSolutions(solutions, check=False):
@@ -55,11 +55,17 @@ orgEsts = [3.3, 4.30, 0.25, 0.3, 3.3, 15]
 
 bounds = [[0.01, 10.0], [1.0, 50.0], 
           [0.01, 5.0], [0.0, 10.0], [0.1, 50.0], [0.01, 50.0]]
-
+algoNames = ["NSGAII", "SPEA2", "DE", "L-BFGS-B", "Nelder-Mead"]
 numPlot = np.arange(0, 30 + 1)
 
 # loop through the salinities
 fig, axes = plt.subplots(4, len(varsFit), figsize=(15, 8))
+
+varsTest = {}
+for v in varsFit:
+    varsTest[v] = {}
+    for n in algoNames:
+        varsTest[v][n] = []
 
 for ns, sig in enumerate(Sigmas):
     salSPEA2 = SPEA2[sig]
@@ -82,18 +88,10 @@ for ns, sig in enumerate(Sigmas):
     parmsLB = np.array([salLB[seed].x for seed in salLB.keys()])
     
     fig.subplots_adjust(wspace=0.25, bottom=0.15, top=0.95)
-
     for n in np.arange(0, len(varsFit)):
 
         if sig == 0:
-
             arrow_args = dict(arrowstyle="-")
-            # horizontal line
-            #plt.annotate("", xy=(-38.4, 255), xytext=(6, 255), arrowprops=arrow_args,
-            #            annotation_clip=False)
-            # vertical line
-            #plt.annotate("", xy=(-38.3, -35), xytext=(-38.3, 255.75), arrowprops=arrow_args,
-            #            annotation_clip=False)
             axes[ns, n].set_title(varsFit[n], fontsize=20, y=1)
         
         Nvals = parmsNSGAII[numPlot,n]
@@ -101,16 +99,21 @@ for ns, sig in enumerate(Sigmas):
         Dvals = parmsDE[:,n]
         NMvals = parmsNM[:,n]
         LBvals = parmsLB[:,n]
-
-        axes[ns, n].boxplot([Nvals, Svals, Dvals, LBvals, NMvals], 
+        DataToPlot = [Nvals, Svals, Dvals, LBvals, NMvals]
+        axes[ns, n].violinplot(DataToPlot, 
                             widths=0.6) 
         axes[ns, n].axhline(orgEsts[n])
         axes[ns, n].set_ylim((bounds[n][0]-2, bounds[n][1]+2))
 
+        for nu, k in zip(DataToPlot, varsTest.keys()):
+            for s in varsTest[k].keys():
+                varsTest[k][s].append(nu)
+        #print(stats.kruskal(Nvals, Svals, Dvals, LBvals, NMvals))
+        #print(stats.mannwhitneyu(Nvals, orgEsts[n]))
         if sig == 1.50:
             axes[ns, n].set_xticks(np.arange(1, 6))
             axes[ns, n].set_xticklabels(
-                        ["NSGAII", "SPEA2", "DE", "L-BFGS-B", "Nelder-Mead"],
+                        algoNames,
                         fontsize=15, rotation=45, ha="right")
 
         else:
@@ -123,4 +126,7 @@ for ns, sig in enumerate(Sigmas):
 plt.savefig("Figures/sigmaParameterFig.png", dpi=600)
 plt.show()
 
-
+for k in varsTest.keys():
+    for s in varsTest[k].keys():
+        print(k, s)
+        print(stats.kruskal(varsTest[k][s][0],varsTest[k][s][1], varsTest[k][s][2], varsTest[k][s][3]))

@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import FussmanModel as fm
 import pickle as pkl
 
-
+SaveData = False
 # Generate our own data
 ############################################################
 Ni = 80
@@ -34,11 +34,12 @@ DataDict = {}
 
 for sigma in Sigmas:
     Data = fm.makeNoisyData(y0, time, parms, sigma)
-
+    print(Data)
     fm.PlotFussman(time, Data[:,1], Data[:,2])
     
     DataDict[sigma] = Data[:,1:]
-  
-os.chdir("Data/")
-with open("GeneratedData.pkl", "wb") as outfile:
-    pkl.dump(DataDict, outfile)
+
+if SaveData: 
+    os.chdir("Data/")
+    with open("GeneratedData.pkl", "wb") as outfile:
+        pkl.dump(DataDict, outfile)

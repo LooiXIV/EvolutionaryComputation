@@ -18,7 +18,7 @@ sigma = 0.
 genData = inte.odeint(fm.Fussman_Org, y0, t, args=(parms,))[:,1:3]
 noisyData = genData + np.random.normal(0,sigma, genData.shape)
 
-np.savetxt("Data/noisyData" + ".txt", noisyData, 
+np.savetxt("Data/noisyData2" + ".txt", noisyData, 
             header="Chlorella\tRotifers")
 
 
