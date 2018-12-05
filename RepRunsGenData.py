@@ -122,13 +122,33 @@ for axes, sig in zip(Allaxes, Sigmas):
     parmsDE = np.array([salDE[seed].x for seed in salDE.keys()])
     parmsNM = np.array([salNM[seed].x for seed in salNM.keys()])
     parmsLB = np.array([salLB[seed].x for seed in salLB.keys()])
-    
+
+    # Get all the error values and calc the mean and std
+    errorNSGAII1 = np.array([sol.objectives[0] for sol in NSGAIIrankSols])
+    errorNSGAII2 = np.array([sol.objectives[1] for sol in NSGAIIrankSols])
+    errorSPEA1 = np.array([sol.objectives[0] for sol in SPEA2rankSols])
+    errorSPEA2 = np.array([sol.objectives[1] for sol in SPEA2rankSols])
+    errorDE = np.array([salDE[seed].fun for seed in salDE.keys()])
+    errorNM = np.array([salNM[seed].fun for seed in salNM.keys()])
+    errorLB = np.array([salLB[seed].fun for seed in salLB.keys()])
+
+    errorMeans = [[np.mean(errorNSGAII1), np.mean(errorNSGAII2)],
+                  [np.mean(errorSPEA1), np.mean(errorSPEA2)],
+                  np.mean(errorDE),
+                  np.mean(errorNM),
+                  np.mean(errorLB)]
+    errorStds = [[np.std(errorNSGAII1), np.std(errorNSGAII2)],
+                  [np.std(errorSPEA1), np.std(errorSPEA2)],
+                  np.std(errorDE),
+                  np.std(errorNM),
+                  np.std(errorLB)]
+
     allParamsEsts = [parmsNSGAII, parmsSPEA2, parmsDE, parmsNM, parmsLB]
     algoFig = {}
 
     # loop through each Algorithm
     # create the figure objects
-    for ax, algoParams in zip(axes, allParamsEsts):
+    for meanLabs, stdLabs, ax, algoParams in zip(errorMeans, errorStds, axes, allParamsEsts):
 
         ax2 = ax.twinx()
         data = GenData[sig]
@@ -150,14 +170,23 @@ for axes, sig in zip(Allaxes, Sigmas):
         ax.set_xticklabels([])
         ax.set_yticks([])
         ax.set_yticklabels([])
+        if np.array_equal(algoParams, parmsNSGAII) or np.array_equal(algoParams, parmsSPEA2):
+            textlabel = "Pred: "+str(np.round(meanLabs[0], 2))+r"$\pm$"+str(np.round(stdLabs[0], 3))+"\n"+\
+                        "Prey: "+str(np.round(meanLabs[1], 2))+r"$\pm$"+str(np.round(stdLabs[1], 3))
+        else:
+            textlabel = str(np.round(meanLabs, 2))+r"$\pm$"+str(np.round(stdLabs, 3))
+        # text box of the means and std of the errors
+        tbox = ax2.text(x=np.max(t), y=np.max(data[:,1])+1, s=textlabel,
+                       verticalalignment="top", horizontalalignment="right")
+        tbox.set_bbox(dict(alpha=0.85, facecolor="white", edgecolor="grey", boxstyle="round"))
 
         ax2.set_yticks([])
         ax2.set_yticklabels([])
         if counter <= 4:
             ax.set_title(algoNames[counter], fontsize=15)
         if counter == 0 or counter == 5 or counter == 10 or counter == 15:
-            ax.set_ylabel(r"$\sigma$ = "+str(sig), 
-                    rotation=0, fontsize=15, labelpad=50)
+            ax.set_ylabel(r"$\sigma$ = "+str(sig), horizontalalignment="right", 
+                    rotation=0, fontsize=15, labelpad=5)
         counter += 1
 lineLeg = [Line2D([0], [0], linestyle=linestyles[2], color="darkblue"),
            Line2D([0], [0], linestyle=linestyles[3], color="darkmagenta"),
@@ -169,7 +198,5 @@ leg = plt.legend(lineLeg, lineLegLabels,loc=9,
            bbox_to_anchor=(-1.5, -0.15), ncol=4,
            fontsize=14)
 
-plt.savefig("Data/RepPlotsGenData.png", dpi=600)
+plt.savefig("Figures/RepPlotsGenData.jpeg", dpi=300)
 plt.show()
-
-
