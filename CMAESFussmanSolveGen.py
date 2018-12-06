@@ -30,7 +30,7 @@ ChDataDict = pkl.load(inFile)
 # Run CMAES for each sigma for each random seed
 GenCMAESSol = {}
 for sigma in ChDataDict.keys():
-    data = ChDataDict[sal]
+    data = ChDataDict[sigma]
     GenCMAESSol[sigma] = {}
     for s in seedNums:
         p = GetSol(data, time, y0, s).xbest
