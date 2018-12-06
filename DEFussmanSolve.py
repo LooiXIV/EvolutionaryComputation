@@ -13,8 +13,7 @@ from scipy.optimize import differential_evolution as DE
 os.chdir("Data/")
 PlotSol = False 
 seedNums = np.arange(10, 41)
-#seedNums = [10]
-# read in smoothed data: rep1
+# read in data
 smoothDataFile = open('ExpData.csv', 'r')
 next(smoothDataFile)
 

@@ -16,7 +16,7 @@ seedVal = 10
 AlgoToUse = NSGAII 
 nameModifier = 'NSGAII'
 
-# read in smoothed data: rep1
+# read in data
 smoothDataFile = open('ExpData.csv', 'r')
 next(smoothDataFile)
 

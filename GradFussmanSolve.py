@@ -12,7 +12,7 @@ from scipy.optimize import minimize
 seedNums = np.arange(10, 41)
 
 os.chdir("Data/")
-# read in smoothed data: rep1
+# read in data
 smoothDataFile = open('ExpData.csv', 'r')
 next(smoothDataFile)
 
