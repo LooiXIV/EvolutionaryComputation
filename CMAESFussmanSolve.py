@@ -7,7 +7,6 @@ import scipy.integrate as inte
 import matplotlib.pyplot as plt
 import FussmanModel as fm
 
-
 def GetSol(data, time, y0, seed):
 # Run CMAES on data given parameters time, y0, seed
 # time: time steps to integrate over
