@@ -1,6 +1,5 @@
 #!/anaconda3/bin/env python3
 # -*-utf-8-*-
-#import platypus.algorithms as alg
 from s import *
 import cma
 import numpy as np
@@ -10,12 +9,16 @@ import FussmanModel as fm
 
 
 def GetSol(data, time, y0, seed):
+# Run CMAES on data given parameters time, y0, seed
+# time: time steps to integrate over
+# y0: Initial N,C,R
+# seed: random seed for np.random.seed
     bounds = [(1.0, 10.0), (1.0, 25.0), 
               (0.01, 0.50), (0.0, 0.9), (0.1, 10.0), (1.0, 50.0)]
-#    bounds = [(3., 4.), (1., 5.), (.1, .3), (0., .1), (2., 3.), (10., 20.)]
 
+    # Fitness function with linear penalty for exceeding bounds
+    # Using single objective RMSE fitness function as base
     def constrainedFitness(parms):
-        #return fm.FitnessFuncSO(parms, y0, time, data, False, True)
         with stdout_redirected():
             fitness = fm.FitnessFuncSO(parms, y0, time, data, False, True)
         for n,b in enumerate(bounds):
@@ -27,16 +30,16 @@ def GetSol(data, time, y0, seed):
         return (fitness,)
 
     np.random.seed(seed)
-
+    
+    # Choose random starting point, lambda = 30
     es = cma.CMAEvolutionStrategy([np.random.uniform(b[0], b[1])  for b in bounds], 1.,
                                   {'popsize':30})
 
+    # Run algorithm until stopping conditions are met
     while not es.stop():
         solutions = es.ask()
         es.tell(solutions, [constrainedFitness(s) for s in solutions])
-        #es.disp()
     bestSol = es.result_pretty()
-        #bestSol = es.optimize(constrainedFitness, iterations=20000)
     return bestSol
 
 

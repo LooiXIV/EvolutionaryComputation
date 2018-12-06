@@ -10,6 +10,8 @@ import FussmanModel as fm
 import pickle as pkl
 from CMAESFussmanSolve import *
 
+
+# Initializations
 seedNums = np.arange(10,41)
 bounds = [(1.0, 10.0), (1.0, 25.0), 
           (0.01, 0.50), (0.0, 0.9), (0.1, 10.0), (1.0, 50.0)]
@@ -21,21 +23,24 @@ R = 0.7
 y0 = [Ni, C, R]
 time = np.arange(0, 40)
 
+# Load data from file
 inFile = open("Data/GeneratedData.pkl","rb")
 ChDataDict = pkl.load(inFile)
 
+# Run CMAES for each sigma for each random seed
 GenCMAESSol = {}
-for sal in ChDataDict.keys():
+for sigma in ChDataDict.keys():
     data = ChDataDict[sal]
-    GenCMAESSol[sal] = {}
+    GenCMAESSol[sigma] = {}
     for s in seedNums:
         p = GetSol(data, time, y0, s).xbest
         print(p)
-        GenCMAESSol[sal][s] = p  
+        # Save best individual for each run
+        GenCMAESSol[sigma][s] = p  
 
 
-
-with open("SalCMAESSolutions.pkl", "wb") as outFile:
-    pkl.dump(GenCMAESSol, outfile)
+# Save best individuals to file
+with open("GenCMAESSolutions.pkl", "wb") as outFile:
+    pkl.dump(GenCMAESSol, outFile)
 
 

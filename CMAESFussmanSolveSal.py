@@ -1,6 +1,5 @@
 #!/anaconda3/bin/env python3
 # -*-utf-8-*-
-#import platypus.algorithms as alg
 from CMAESFussmanSolve import *
 import cma
 import numpy as np
@@ -8,11 +7,12 @@ import scipy.integrate as inte
 import matplotlib.pyplot as plt
 import FussmanModel as fm
 
-PlotSol = False 
+# Initializations
 seedNums = np.arange(10, 41)
 smoothDataFile = open('Data/rep1smooth.csv', 'r')
 next(smoothDataFile)
 
+# Load data from csv files
 chData = np.zeros((50,8))
 for row, line in enumerate(smoothDataFile):
     line = line.strip('\n')
@@ -34,7 +34,6 @@ y0 = [Ni, C, R]
 # clip the data organize into the the separate salinities
 # and normalize the chlorella data to the correct units
 Salinities = [3, 16, 35, 45]
-#Salinities = [3]
 chlInd = np.arange(0,numCols+1,2)
 rotInd = np.arange(1,numCols+1,2)
 chData = chData[0:row,:]
@@ -50,6 +49,7 @@ for ind, sal in enumerate(Salinities):
 
 time = np.arange(0, 37)
 
+# Run CMAES on each salinity for each random seed
 SalCMAESSol = {}
 for sal in ChDataDict.keys():
     data = ChDataDict[sal]
@@ -57,19 +57,10 @@ for sal in ChDataDict.keys():
     for s in seedNums:
         p = GetSol(data, time, y0, s).xbest
         print(p)
+        # Save best individual for each run
         SalCMAESSol[sal][s] = p  
 
-
-        '''
-        genData = inte.odeint(fm.Fussman_Org, y0, time, args=(p,))
-        plt.plot(time, data[:,0], 'orange', label="Chlorella (true)")
-        plt.plot(time, data[:,1], 'red', label="Rotifer (true)")
-        plt.plot(time, genData[:,1], 'blue', label="Chlorella")
-        plt.plot(time, genData[:,2], 'green', label="Rotifer")
-        plt.legend()
-        plt.show()
-        '''
-
-with open("SalCMAESSolutions.pkl", "rb") as outFile:
+# Save best individuals to file
+with open("SalCMAESSolutions.pkl", "wb") as outFile:
     pkl.dump(SalCMAESSol, outfile)
 
