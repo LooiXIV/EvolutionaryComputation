@@ -15,7 +15,7 @@ PlotSol = False
 seedNums = np.arange(10, 41)
 #seedNums = [10]
 # read in smoothed data: rep1
-smoothDataFile = open('rep1smooth.csv', 'r')
+smoothDataFile = open('ExpData.csv', 'r')
 next(smoothDataFile)
 
 chData = np.zeros((50,8))

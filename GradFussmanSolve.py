@@ -13,7 +13,7 @@ seedNums = np.arange(10, 41)
 
 os.chdir("Data/")
 # read in smoothed data: rep1
-smoothDataFile = open('rep1smooth.csv', 'r')
+smoothDataFile = open('ExpData.csv', 'r')
 next(smoothDataFile)
 
 
