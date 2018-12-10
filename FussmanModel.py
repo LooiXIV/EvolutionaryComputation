@@ -217,21 +217,18 @@ def Fussman_Org(y0, t, parms):
 
     Parameters:
     _______________________________________________________
-    d:     parms[0]  # Delta
-    Ni:    parms[1]  # Initial Nitrogen
-    betaC: parms[2]  # Offspring production: Chlorella
-    Kc:    parms[3]  # Half Saturation constant of Chlorella
-    m:     parms[4]  # Death rate of Rotifers
-    betaR: parms[5]  # Offspring production of Rotifers
-    Kr:    parms[6]  # Half saturation constant for R
+    betaC: parms[0]  # Offspring production: Chlorella
+    Kc:    parms[1]  # Half Saturation constant of Chlorella
+    e:     parms[2]  # Assimilation efficiency of rotifers
+    m:     parms[3]  # Death rate of Rotifers
+    betaR: parms[4]  # Offspring production of Rotifers
+    Kr:    parms[5]  # Half saturation constant for R
 
     Populations:
     _______________________________________________________
     dN: Concentration of Nitrogen
     dC: Concentration of Chlorella
-    dJ: Concentration of Juvenile Rotifers
-    dA: Concentration of Adult Rotifers
-    dD: Concentration of Dead Rotifers
+    dR: Concentration of Rotifers
     """
     ## Parameters
     # Whole system parameters
@@ -302,7 +299,7 @@ def FitnessFuncSO(parms, y0, t, data, normMSE=False, RMSE=False):
     
     return Ret_rotifers + Ret_chlorella
 
-def FittnessFuncMO(parms, y0, t, data, normMSE=False, RMSE=False):
+def FittnessFuncMO(parms, y0, t, data, normMSE=False, RMSE=True):
     """
     The Fitness Function for the multi-objective problem.
     """

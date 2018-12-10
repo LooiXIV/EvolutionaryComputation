@@ -53,6 +53,14 @@ LB = pkl.load(infile)
 infile = open("Data/GradientBestNMGenData.pkl", "rb")
 NM = pkl.load(infile)
 
+# Read in Gradient Descent Nelder-Mead
+infile = open("Data/GradientBestNMGenData.pkl", "rb")
+NM = pkl.load(infile)
+
+# Read in CMAES
+infile = open("Data/GenCMAESSolutions.pkl", "rb")
+CM = pkl.load(infile)
+
 # Read in the original Generated Data
 infile = open("Data/GeneratedData.pkl", "rb")
 GenData = pkl.load(infile)
@@ -109,6 +117,7 @@ for axes, sig in zip(Allaxes, Sigmas):
     salDE = DE[sig]
     salLB = LB[sig]
     salNM = NM[sig]
+    salCM = CM[sig]
 
     allSolsSPEA2 = salSPEA2["End_Solutions"]
     allSolsNSGAII = salNSGAII["End_Solutions"]
@@ -120,14 +129,23 @@ for axes, sig in zip(Allaxes, Sigmas):
     parmsNSGAII = np.array([sol.variables for sol in NSGAIIrankSols])
     parmsSPEA2 = np.array([sol.variables for sol in SPEA2rankSols])
     parmsDE = np.array([salDE[seed].x for seed in salDE.keys()])
-    parmsNM = np.array([salNM[seed].x for seed in salNM.keys()])
-    parmsLB = np.array([salLB[seed].x for seed in salLB.keys()])
+    parmsCM = np.array([salCM[seed] for seed in salCM.keys()])
+    #parmsNM = np.array([salNM[seed].x for seed in salNM.keys()])
+    #parmsNM = np.array([salNM[seed].x for seed in salNM.keys()])
+
+    parmsNM = np.array([salNM[40].x for seed in np.arange(0, 31)])
+    parmsLB = np.array([salLB[40].x for seed in np.arange(0, 31)])
 
     # Get all the error values and calc the mean and std
     errorNSGAII1 = np.array([sol.objectives[0] for sol in NSGAIIrankSols])
     errorNSGAII2 = np.array([sol.objectives[1] for sol in NSGAIIrankSols])
     errorSPEA1 = np.array([sol.objectives[0] for sol in SPEA2rankSols])
     errorSPEA2 = np.array([sol.objectives[1] for sol in SPEA2rankSols])
+
+    
+
+    errorCM = np.array(fm.FitnessFuncSO([salCM[seed], y0, t, RMSE=True) for seed in salCM.keys()])
+    
     errorDE = np.array([salDE[seed].fun for seed in salDE.keys()])
     errorNM = np.array([salNM[seed].fun for seed in salNM.keys()])
     errorLB = np.array([salLB[seed].fun for seed in salLB.keys()])
@@ -142,10 +160,9 @@ for axes, sig in zip(Allaxes, Sigmas):
                   np.std(errorDE),
                   np.std(errorNM),
                   np.std(errorLB)]
-
+    #print(parmsLB)
     allParamsEsts = [parmsNSGAII, parmsSPEA2, parmsDE, parmsNM, parmsLB]
     algoFig = {}
-
     # loop through each Algorithm
     # create the figure objects
     for meanLabs, stdLabs, ax, algoParams in zip(errorMeans, errorStds, axes, allParamsEsts):
@@ -158,8 +175,8 @@ for axes, sig in zip(Allaxes, Sigmas):
             sol = inte.odeint(fm.Fussman_Org, y0, t, args=(params,))
             # create the runs using the estimated parameters
             ax.plot(t, sol[:,1], alpha=0.02, color="g")
-            ax2.plot(t, sol[:,2], alpha=0.02, color="r")
-
+            ax2.plot(t, sol[:,2], alpha=0.02, color="darkorange")
+            
         # plot the actual Generated Data 
         ax.plot(t, data[:,0], color="darkblue", linestyle=linestyles[2])
         ax2.plot(t, data[:,1], color="darkmagenta", linestyle=linestyles[3])
@@ -191,12 +208,13 @@ for axes, sig in zip(Allaxes, Sigmas):
 lineLeg = [Line2D([0], [0], linestyle=linestyles[2], color="darkblue"),
            Line2D([0], [0], linestyle=linestyles[3], color="darkmagenta"),
            Line2D([0], [0], color="g"),
-           Line2D([0], [0], color="r")]
+           Line2D([0], [0], color="darkorange")]
 lineLegLabels = ["True Prey", "True Predator", 
                  "Estimated Prey", "Estimated Predator"]
 leg = plt.legend(lineLeg, lineLegLabels,loc=9,
            bbox_to_anchor=(-1.5, -0.15), ncol=4,
            fontsize=14)
 
-plt.savefig("Figures/RepPlotsGenData.jpeg", dpi=300)
+plt.savefig("Figures/RepPlotsGenData2.png", dpi=300)
+
 plt.show()

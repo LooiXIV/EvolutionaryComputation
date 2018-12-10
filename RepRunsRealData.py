@@ -54,8 +54,8 @@ infile = open("Data/GradientBestNM.pkl", "rb")
 NM = pkl.load(infile)
 
 # Read in the read experimental Data
-# read in smoothed data: rep1
-smoothDataFile = open('Data/rep1smooth.csv', 'r')
+# read in data
+smoothDataFile = open('Data/ExpData.csv', 'r')
 next(smoothDataFile)
 
 
@@ -179,7 +179,7 @@ for axes, sig in zip(Allaxes, ChDataDict.keys()):
             sol = inte.odeint(fm.Fussman_Org, y0, t, args=(params,))
             # create the runs using the estimated parameters
             ax.plot(t, sol[:,1], alpha=0.02, color="g")
-            ax2.plot(t, sol[:,2], alpha=0.02, color="r")
+            ax2.plot(t, sol[:,2], alpha=0.02, color="darkorange")
 
         # plot the actual Generated Data 
         ax.plot(t, data[:,0], color="darkblue", linestyle=linestyles[2])
@@ -214,14 +214,14 @@ for axes, sig in zip(Allaxes, ChDataDict.keys()):
 lineLeg = [Line2D([0], [0], linestyle=linestyles[2], color="darkblue"),
            Line2D([0], [0], linestyle=linestyles[3], color="darkmagenta"),
            Line2D([0], [0], color="g"),
-           Line2D([0], [0], color="r")]
+           Line2D([0], [0], color="darkorange")]
 lineLegLabels = ["True Prey", "True Predator", 
                  "Estimated Prey", "Estimated Predator"]
 leg = plt.legend(lineLeg, lineLegLabels,loc=9,
            bbox_to_anchor=(-1.5, -0.15), ncol=4,
            fontsize=14)
 
-plt.savefig("Figures/RepPlotsRealData.jpeg", dpi=300)
+plt.savefig("Figures/RepPlotsRealData2.png", dpi=300)
 plt.show()
 
 

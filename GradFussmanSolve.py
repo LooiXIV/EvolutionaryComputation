@@ -8,6 +8,7 @@ import FussmanModel as fm
 import random as rd
 import pickle as pkl 
 from scipy.optimize import minimize
+from numpy.random import uniform as runi
 
 seedNums = np.arange(10, 41)
 
@@ -47,13 +48,14 @@ for ind, sal in enumerate(Salinities):
 
 # single objective Gradient Descent with RMSE fitness function
 ###############################################################
-bounds = [(0.0,1.0), 
-          (1.0, 10.0), (1.0, 25.0), 
+bounds = [(1.0, 10.0), (1.0, 25.0), 
           (0.01, 0.50), (0.0, 0.9), (0.1, 10.0), (1.0, 50.0)]
 
-initGuess = [0,
-            1.0, 1.0, 
-            0.01, 0.0, 0.1, 1.0]
+initGuesses = {3:[3.3, 4.3, 0.25, 0.3, 1.0, 15.0],
+                16:[3.3, 4.3, 0.25, 0.555, 2.155., 15.0]
+                35:[1.0, 4.3, 0.25, 0.2, 2.4, 15.0]
+                45:[1.0, 4.3, 0.25, 0.3, 1.0, 15.0]}
+
 Ni = 80
 C = 2.5
 R = 0.7
@@ -73,7 +75,10 @@ for sal in Salinities:
 
         np.random.seed(seedNum)
         rd.seed(seedNum)
-
+        #initGuess = [runi(bounds[0][0], bounds[0][1]), runi(bounds[1][0], bounds[1][1]), 
+        #             runi(bounds[2][0], bounds[2][1]), runi(bounds[3][0], bounds[3][1]), 
+        #             runi(bounds[4][0], bounds[4][1]), runi(bounds[5][0], bounds[5][1])]
+        initGuess = initGuesses[sal]
         solNM = minimize(fm.FitnessFuncSO, initGuess, method='Nelder-Mead', 
                          bounds=bounds, 
                          args=(y0, time, chData, False, True))

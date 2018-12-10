@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import FussmanModel as fm
 import random as rd
 import pickle as pkl 
+from numpy.random import uniform as runi
 from scipy.optimize import minimize
 
 seedNums = np.arange(10, 41)
@@ -22,6 +23,7 @@ bounds = [(1.0, 10.0), (1.0, 25.0),
 
 initGuess = [1.0, 1.0, 
              0.01, 0.0, 0.1, 1.0]
+
 Ni = 80
 C = 2.5
 R = 0.7
@@ -43,6 +45,9 @@ for sig in Sigmas:
 
         np.random.seed(seedNum)
         rd.seed(seedNum)
+        #initGuess = [runi(bounds[0][0], bounds[0][1]), runi(bounds[1][0], bounds[1][1]), 
+        #             runi(bounds[2][0], bounds[2][1]), runi(bounds[3][0], bounds[3][1]), 
+        #             runi(bounds[4][0], bounds[4][1]), runi(bounds[5][0], bounds[5][1])]
 
         solNM = minimize(fm.FitnessFuncSO, initGuess, method='Nelder-Mead', 
                          bounds=bounds, 
@@ -52,8 +57,8 @@ for sig in Sigmas:
                          bounds=bounds,
                          args=(y0, time, chData, False, True))
 
-        NMDict[seedNum] = solNM
-        LBDict[seedNum] = solLB
+    NMDict[seedNum] = solNM
+    LBDict[seedNum] = solLB
     SigNMDict[sig] = NMDict
     SigLBDict[sig] = LBDict
 
