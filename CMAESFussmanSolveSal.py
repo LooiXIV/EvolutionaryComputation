@@ -6,9 +6,10 @@ import numpy as np
 import scipy.integrate as inte
 import matplotlib.pyplot as plt
 import FussmanModel as fm
+import pickle as pkl
 
 # Initializations
-seedNums = np.arange(10, 41)
+seedNums = np.arange(10, 41) #41
 smoothDataFile = open('Data/rep1smooth.csv', 'r')
 next(smoothDataFile)
 
@@ -62,5 +63,5 @@ for sal in ChDataDict.keys():
 
 # Save best individuals to file
 with open("SalCMAESSolutions.pkl", "wb") as outFile:
-    pkl.dump(SalCMAESSol, outfile)
+    pkl.dump(SalCMAESSol, outFile)
 
